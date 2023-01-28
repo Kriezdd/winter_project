@@ -1,7 +1,7 @@
 .welcomeScreen {
   height: 53.125rem;
   width: 100%;
-  background-image: url('./img/back.png');
+  background-image: url('../../images/back.png');
 
   .welcomeMessage {
     padding-top: 39.375rem;
@@ -30,6 +30,7 @@
       background: #1E1E1E;
       border: 3px solid #EB8D01;
       border-radius: 5.625rem;
+      transition: all 0.3s ease-in-out; // для обратной анимации
     }
 
     button:hover {

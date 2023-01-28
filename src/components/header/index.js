@@ -1,10 +1,11 @@
 import React from 'react';
-import './Header.scss';
+import './style.scss';
+import { cn as bem } from "@bem-react/classname";
 
 const Header = () => {
+    const cn = bem("header");
     return (
-        <header className="header">
-
+        <div className={cn()}>
             <div className="title">
                 <h1>KINOMAP</h1>
                 <hr/>
@@ -25,8 +26,8 @@ const Header = () => {
                 </div>
             </div>
 
-        </header>
+        </div>
     );
 };
 
-export default Header;
+export default React.memo(Header);

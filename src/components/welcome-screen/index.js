@@ -1,5 +1,5 @@
 import React from 'react';
-import './WelcomeScreen.scss'
+import './style.scss'
 
 const WelcomeScreen = () => {
     const consoleMessage = function (){return console.log("Подобрать фильм - КЛИК");}
@@ -13,4 +13,4 @@ const WelcomeScreen = () => {
     );
 };
 
-export default WelcomeScreen;
+export default React.memo(WelcomeScreen);

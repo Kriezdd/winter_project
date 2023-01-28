@@ -1,7 +1,7 @@
 import React from 'react';
-import drivePoster from '../main/img/drive_poster500x500.png';
-import nextMovie from '../main/img/next_movie200x500.png'
-import './RandomFilms.scss'
+import drivePoster from '../../images/drive_poster500x500.png';
+import nextMovie from '../../images/next_movie200x500.png'
+import './style.scss'
 
 const RandomFilms = () => {
     const consoleMessage = function () {return console.log('next')};
@@ -39,4 +39,4 @@ const RandomFilms = () => {
     );
 };
 
-export default RandomFilms;
+export default React.memo(RandomFilms);
