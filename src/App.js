@@ -1,4 +1,4 @@
-    import React from "react";
+import React from "react";
 import Header from "./components/Header/Header";
 import './App.scss';
 
@@ -7,7 +7,7 @@ function App() {
         <div className="App">
             <Header/>
             <div className="MainPage">
-                <h1>Главная</h1>
+                <h1>О НАС</h1>
             </div>
         </div>
     );
