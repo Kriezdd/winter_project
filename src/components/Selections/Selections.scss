@@ -1,5 +1,37 @@
+
 .Selections {
-  h1 {
-    color: green;
+  .BlockTitle {
+    padding: 3rem 0 1rem 0;
+    margin: 0;
+    text-align: center;
   }
+  .Container{
+    width: calc(100vw - 60px);
+    margin: 0 auto;
+  }
+}
+
+.SelectionBlock {
+  width: 100%;
+  height: 37rem;
+
+  .Layout {
+    display: flex;
+    width: 100%;
+    height: 33rem;
+    // todo: fix shadow layout width on second card
+    .CarouselContainerScroll {
+      display: flex;
+      padding: 2rem 0;
+      margin: 0;
+    }
+  }
+
+}
+
+.SelectionTitle {
+  margin: 0;
+  padding: 2rem 0;
+  font-weight: 700;
+  text-transform: uppercase;
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import {useNavigate} from "react-router-dom";
-//import filter_icon from 'C:/Users/blagu/WebstormProjects/winter_project/src/assets/filter_icon.png'
-//import search_icon from 'C:/Users/blagu/WebstormProjects/winter_project/src/assets/search_icon.png'
+// import filter_icon from 'C:/Users/blagu/WebstormProjects/winter_project/src/assets/filter_icon.png'
+// import search_icon from 'C:/Users/blagu/WebstormProjects/winter_project/src/assets/search_icon.png'
 import './Header.scss';
 
 const Header = () => {
