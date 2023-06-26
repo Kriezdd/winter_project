@@ -61,8 +61,6 @@ const Catalog = () => {
                     <div className="form-head"> 
                     <h2 className="form-Name">Фильтр</h2>
                     </div>
-                    <p>start: {choiceYear[0]}</p>
-                    <p>end:{choiceYear[1]}</p>
                     <ReactSlider 
                     className="catalog__year-slider" 
                     thumbClassName="example-thumb"
