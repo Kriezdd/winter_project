@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './Selections.scss';
 import Header from "../Header/Header";
 import SelectionBlock from "./SelectionBlock";
+import {EmblaCarousel} from "../EmblaCarousel/EmblaCarousel";
 
 const Selections = () => {
     const [selections, setSelections] = useState([

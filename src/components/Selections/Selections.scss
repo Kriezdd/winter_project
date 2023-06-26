@@ -5,6 +5,10 @@
     margin: 0;
     text-align: center;
   }
+  .Container{
+    width: calc(100vw - 60px);
+    margin: 0 auto;
+  }
 }
 
 .SelectionBlock {
@@ -27,7 +31,7 @@
 
 .SelectionTitle {
   margin: 0;
-  padding: 2rem 3.13rem 0;
+  padding: 2rem 0;
   font-weight: 700;
   text-transform: uppercase;
 }

@@ -1,21 +1,24 @@
 .MovieCardSmall {
   width: 18.75rem;
   height: 31.375rem;
-  padding: 0 0 0 3.13rem;
-  margin: 0;
-
+  width: fit-content;
+  flex: 0 0 15%;
   .Poster {
     display: flex;
     flex-direction: column-reverse;
-    width: 100%;
     height: 28.125rem;
     background-size: 100%;
+    position: relative;
+    img{
+      max-width: 250px;
+    }
   }
   .ShadowBG {
     height: fit-content;
+    width: 100%;
     padding-top: 0.2rem;
     background: rgba(31, 31, 31, 0.87);
-
+    position: absolute;
     .OriginalTitle {
       margin: 0;
       color: rgba(207, 207, 207, 0.80);

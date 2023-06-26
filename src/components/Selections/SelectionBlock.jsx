@@ -1,5 +1,6 @@
 import React from 'react';
 import MovieCardSmall from "../MovieCards/MovieCardSmall";
+import {EmblaCarousel} from "../EmblaCarousel/EmblaCarousel";
 
 
 const SelectionBlock = (props) => {
@@ -7,7 +8,7 @@ const SelectionBlock = (props) => {
         <div className="SelectionBlock">
             <h3 className="SelectionTitle">{props.selection.title}</h3>
             <div className="Layout">
-                <div className="CarouselContainerScroll">
+                <EmblaCarousel>
                     <MovieCardSmall/>
                     <MovieCardSmall/>
                     <MovieCardSmall/>
@@ -15,7 +16,10 @@ const SelectionBlock = (props) => {
                     <MovieCardSmall/>
                     <MovieCardSmall/>
                     <MovieCardSmall/>
-                </div>
+                    <MovieCardSmall/>
+
+
+                </EmblaCarousel>
             </div>
         </div>
     );
