@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import './Selections.scss';
 import Header from "../Header/Header";
-import SelectionCard from "./SelectionCard";
+import SelectionBlock from "./SelectionBlock";
 
 const Selections = () => {
     const [selections, setSelections] = useState([
@@ -13,10 +13,10 @@ const Selections = () => {
         <div>
             <Header/>
             <div className="Selections">
-                <h2>Подборки от KINOSPOT:</h2>
+                <h2 className="BlockTitle">Подборки от KINOSPOT:</h2>
                 <div className="Container">
                     {selections.map(selection =>
-                        <SelectionCard selection={selection}/>
+                        <SelectionBlock selection={selection}/>
                     )}
                 </div>
             </div>
