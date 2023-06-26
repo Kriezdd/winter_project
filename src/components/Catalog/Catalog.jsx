@@ -4,6 +4,7 @@ import MyInput from "./MyInput";
 import CardList from './CardList'
 import Header from "../Header/Header";
 import ReactSlider from "react-slider";
+import CatalogFilm from "./CatalogFilm";
 const Catalog = () => {
     const [movieList, setmovieList] = useState([
         { id: 1, title: 'Drive', discription: 'lorem fffffffffffffffff', genre: 'crime ryan gosling', movieImg: 'https://i.artfile.ru/4256x2832_1639065_[www.ArtFile.ru].jpg', year: '2008' ,kp: '7.8' },
@@ -35,6 +36,7 @@ const Catalog = () => {
     return (
        <div>
           <Header/>
+          <CatalogFilm movie={{movieImg: 'https://i.pinimg.com/originals/b7/62/b1/b762b184afe21c6af483607e84c307b0.png',title:'Drive', genre:'криминал драма триллер',discription:'Великолепный водитель – при свете дня он выполняет каскадёрские трюки на съёмочных площадках Голливуда, а по ночам ведет рискованную игру. Но один опасный контракт – и за его жизнь назначена награда. Теперь, чтобы остаться в живых и спасти свою очаровательную соседку, он должен делать то, что умеет лучше всего – виртуозно уходить от погони.',director:'Режиссёр: Николас Виндинг Рефн',kp:'8.7'}}/>
         <div className="catalog">    
             <div className="catalog-cards">
                 <form className="catalog-cards__filter" name="form1">

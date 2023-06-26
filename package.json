@@ -11,13 +11,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.13.0",
-<<<<<<< HEAD
     "react-scripts": "^5.0.1",
     "react-slider": "^2.0.5",
-=======
-    "react-scripts": "5.0.1",
-    "react-slick": "^0.29.0",
->>>>>>> 436b7308a619e1482b9c99616b4f9ce6e11a423a
     "sass": "^1.57.1",
     "slick-carousel": "^1.8.1",
     "web-vitals": "^2.1.4"
