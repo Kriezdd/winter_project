@@ -11,7 +11,7 @@
 @import "~slick-carousel/slick/slick-theme.css";
 
 html {
-    font-family: Montserrat, 'serif';
+    font-family: Montserrat, sans-serif;
     line-height: 1.15; /* 1 */
     -webkit-text-size-adjust: 100%; /* 2 */
 }

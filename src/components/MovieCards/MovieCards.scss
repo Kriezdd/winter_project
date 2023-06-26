@@ -2,15 +2,14 @@
   width: 18.75rem;
   height: 31.375rem;
   width: fit-content;
-  flex: 0 0 15%;
+  flex: 0 0 18%;
   .Poster {
     display: flex;
     flex-direction: column-reverse;
     height: 28.125rem;
-    background-size: 100%;
     position: relative;
     img{
-      max-width: 250px;
+      max-width: 18.75rem;
     }
   }
   .ShadowBG {

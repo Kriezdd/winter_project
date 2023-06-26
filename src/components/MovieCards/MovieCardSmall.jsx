@@ -1,7 +1,15 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './MovieCards.scss';
 
 const MovieCardSmall = () => {
+    const [movieCard, setMovieCard] = useState([
+        {poster: "", originalTitle: "", localTitle: ""},
+        {poster: "", originalTitle: "", localTitle: ""},
+        {poster: "", originalTitle: "", localTitle: ""},
+        {poster: "", originalTitle: "", localTitle: ""},
+        {poster: "", originalTitle: "", localTitle: ""},
+        {poster: "", originalTitle: "", localTitle: ""}
+    ])
     return (
         <div className="MovieCardSmall">
             <div className="Poster">

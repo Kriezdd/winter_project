@@ -17,8 +17,6 @@ const SelectionBlock = (props) => {
                     <MovieCardSmall/>
                     <MovieCardSmall/>
                     <MovieCardSmall/>
-
-
                 </EmblaCarousel>
             </div>
         </div>
