@@ -103,12 +103,17 @@ const Catalog = () => {
   const [filteredMovieList, setFilteredMovieList] = useState(movieList);
   const [selectedSort, setSelectedSort] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
-  const [choiceYear, setChoiceYear] = useState([1896, 2023]);
+  const [chosenYears, setChosenYears] = useState([1896, 2023]);
   const [chosenRating, setChosenRating] = useState([0, 10]);
+  const [isFilterActive, setIsFilterActive] = useState(false);
 
   const sortMovieList = (sortBy) => {
     let tempArray;
+
     setSelectedSort(sortBy);
+    if(searchQuery){
+      setSortedMovieList(searchedMovieList)
+    }
     if (["id", "year"].includes(sortBy)) {
       tempArray = [...movieList]
         .map((value) => JSON.parse(JSON.stringify(value)))
@@ -116,7 +121,8 @@ const Catalog = () => {
           // map используется для того, чтобы основной массив не мутировал
           if (a[sortBy] > b[sortBy] && sortBy === "year")
             return -1;
-          else if (a[sortBy] < b[sortBy] && sortBy === "id") return -1;
+          else if (a[sortBy] < b[sortBy] && sortBy === "id")
+            return -1;
         });
     } else if (["title"].includes(sortBy))
       tempArray = [...movieList].sort((a, b) => {
@@ -126,11 +132,12 @@ const Catalog = () => {
   };
 
   const filterMovieList = () => {
+    setFilteredMovieList(sortedMovieList);
     setFilteredMovieList(
-      sortedMovieList.filter((movie) => {
+      filteredMovieList.filter((movie) => {
         return (
-          movie.year >= Number(choiceYear[0]) &&
-          movie.year <= Number(choiceYear[1]) &&
+          movie.year >= Number(chosenYears[0]) &&
+          movie.year <= Number(chosenYears[1]) &&
           movie.kp >= Number(chosenRating[0]) &&
           movie.kp <= Number(chosenRating[1])
         );
@@ -138,8 +145,14 @@ const Catalog = () => {
     );
   };
 
+  const handleSearch = (e) => {
+    setSearchQuery(e.target.value);
+    searchMovie();
+  }
+
   const searchMovie = () => {
-    const tempArray = movieList.filter((movie) => {
+
+    const tempArray = sortedMovieList.filter((movie) => {
       return movie.title.toLowerCase().includes(searchQuery.toLowerCase());
     });
     setSearchedMovieList(tempArray);
@@ -182,7 +195,7 @@ const Catalog = () => {
           </form>
           <CardList
             movieList={
-              searchQuery.length >= 2 ? searchedMovieList : sortedMovieList
+              sortedMovieList
             }
           />
         </div>
@@ -190,7 +203,7 @@ const Catalog = () => {
           <MyInput
             placeholder="Поиск Фильма"
             onChange={(e) => {
-              setSearchQuery(e.target.value);
+              handleSearch(e);
             }}
           />
           <form className="catalog-form" name="form2">
@@ -227,7 +240,8 @@ const Catalog = () => {
                   </div>
                 )}
                 onChange={(chosenYear, index) => {
-                  setChoiceYear(chosenYear);
+                  setChosenYears(chosenYear);
+                  setIsFilterActive(true);
                   filterMovieList();
                 }}
               />
@@ -246,16 +260,19 @@ const Catalog = () => {
                 )}
                 onChange={(chosenRating, index) => {
                   setChosenRating(chosenRating);
+                  setIsFilterActive(true);
                   filterMovieList();
                 }}
               />
             </div>
           </form>
-          <p>start: {choiceYear[0]}</p>
-          <p>end :{choiceYear[1]} </p>
+          <p>start: {chosenYears[0]}</p>
+          <p>end :{chosenYears[1]} </p>
         </div>
       </div>
     </>
   );
 };
 export default Catalog;
+
+// todo: починить пересечение сортировок
