@@ -17,6 +17,7 @@
     "web-vitals": "^2.1.4"
   },
   "devDependencies": {
+    "prettier": "2.8.8",
     "react-scripts": "^5.0.1"
   },
   "scripts": {

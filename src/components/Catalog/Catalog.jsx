@@ -1,94 +1,261 @@
-import React, { useState,  } from "react";
-import MySelect from "./MySelect";
+import React, { useEffect, useState } from "react";
+import SortSelection from "./SortSelection";
 import MyInput from "./MyInput";
-import CardList from './CardList'
+import CardList from "./CardList";
 import Header from "../Header/Header";
 import ReactSlider from "react-slider";
 import CatalogFilm from "./CatalogFilm";
 const Catalog = () => {
-    const [movieList, setmovieList] = useState([
-        { id: 1, title: 'Drive', discription: 'lorem fffffffffffffffff', genre: 'crime ryan gosling', movieImg: 'https://i.artfile.ru/4256x2832_1639065_[www.ArtFile.ru].jpg', year: '2008' ,kp: '7.8' },
-        { id: 2, title: 'wolf woll', discription: 'lorem fffffffffffffffff', genre: 'crime ryan gosling', movieImg: 'https://w.forfun.com/fetch/59/5933f0389a044faf9fb48f08bc38847e.jpeg', year: '2007',kp: '7.8' },
-        { id: 3, title: 'orange', discription: 'lorem fffffffffffffffff', genre: 'crime ryan gosling', movieImg: 'https://i.pinimg.com/originals/a6/7c/ef/a67cef52f92193a118e66795aa20e9ca.jpg', year: '1970', kp: '6.8'},
-        { id: 4, title: 'american history x', discription: 'lorem fffffffffffffffff', genre: 'crime ryan gosling', movieImg: 'https://4tololo.ru/sites/default/files/images/20183003133009.jpg', year: '1993' ,kp: '1.8'},
-        { id: 5, title: 'great dictator', discription: 'lorem fffffffffffffffff', genre: 'crime ryan gosling', movieImg: 'https://fs.kinomania.ru/file/film_frame/c/a1/ca1f81af8d0f2a685715eb1a0cc18e8d.jpeg', year: '1940',kp: '8.8' },
-        { id: 6, title: 'thief club', discription: 'lorem fffffffffffffffff', genre: 'crime ryan gosling', movieImg: 'https://roliki-magazin.ru/wp-content/uploads/0/2/5/02554d40173eed3260a4124c657afad6.jpeg', year: '1999' ,kp: '7.8'},
-        { id: 7, title: 'pirat', discription: 'lorem fffffffffffffffff', genre: 'crime ryan gosling', movieImg: 'https://kartinkin.net/uploads/posts/2022-03/1646802297_10-kartinkin-net-p-kartinki-pirat-11.jpg', year: '2004' ,kp: '2.8'},
-        { id: 8, title: 'your name', discription: 'lorem fffffffffffffffff', genre: 'crime ryan gosling', movieImg: 'https://fikiwiki.com/uploads/posts/2022-02/1645006953_37-fikiwiki-com-p-kartinki-tvoe-imya-40.jpg', year: '2020' ,kp: '3.8'},
-        { id: 9, title: 'ne your name', discription: 'lorem fffffffffffffffff', genre: 'crime ryan gosling', movieImg: 'https://8bitodyssey.com/wp-content/uploads/2016/09/yourname.jpg', year: '2021' ,kp: '7.8'},
-        { id: 10, title: 'pendosi', discription: 'lorem fffffffffffffffff', genre: 'crime ryan gosling', movieImg: 'https://i.ytimg.com/vi/xUjMceMnJcA/maxresdefault.jpg', year: '1894',kp: '9.8' },
-        { id: 11, title: 'borat', discription: 'lorem fffffffffffffffff', genre: 'crime ryan gosling', movieImg: 'https://gameguru.ru/clf/ef/ed/60/20/news.1599645195440.jpg', year: '2007',kp: '6.8' },
-    ])
-    const [selectedSort, setselectedSort] = useState(' ')
-    const [searchQaery, setsearchQaery] = useState('')
-    const [choiceYear,setChoiceYear] = useState([1896, 2023])
-    const [choiceKp,setchoiceKp] = useState([0,10])
-    const sortMovieList = (sort) => {
-        setselectedSort(sort)
-        setmovieList([...movieList].sort((a, b) => a[sort].localeCompare(b[sort])))
-    }
-    const FiltredMovies = movieList.filter(movie =>{
-        return movie.title.toLowerCase().includes(searchQaery.toLowerCase())
-    })
-    const FiltredYearMovies = FiltredMovies.filter(movie =>{
-        return movie.year >= Number(choiceYear[0]) &&  movie.year <= Number(choiceYear[1]) && movie.kp >= Number(choiceKp[0]) && movie.kp <= Number(choiceKp[1])
-    }) ;
-    return (
-       <div>
-          <Header/>
-          <CatalogFilm movie={{movieImg: 'https://i.pinimg.com/originals/b7/62/b1/b762b184afe21c6af483607e84c307b0.png',title:'Drive', genre:'криминал драма триллер',discription:'Великолепный водитель – при свете дня он выполняет каскадёрские трюки на съёмочных площадках Голливуда, а по ночам ведет рискованную игру. Но один опасный контракт – и за его жизнь назначена награда. Теперь, чтобы остаться в живых и спасти свою очаровательную соседку, он должен делать то, что умеет лучше всего – виртуозно уходить от погони.',director:'Режиссёр: Николас Виндинг Рефн',kp:'8.7'}}/>
-        <div className="catalog">    
-            <div className="catalog-cards">
-                <form className="catalog-cards__filter" name="form1">
-                    <label for="filter" class="catalog-cards__label">Сортировать по </label>
-                    <MySelect
-                        value={selectedSort}
-                        onChange={sortMovieList}
-                        defaultValue="сортировка"
-                        options={[
-                            { value: 'title', name: 'алфавиту' },
-                            { value: 'year', name: 'годам' }
-                        ]}
-                    />
-                </form>
-                <CardList movielist={FiltredYearMovies} />
-            </div>
-            <div className="catalog-filter">
-                <MyInput placeholder="Поиск Фильма"
-                    onChange={e => setsearchQaery(e.target.value)}
-                />
-                <form className="catalog-form" name='form2'>
-                    <div className="form-head"> 
-                    <h2 className="form-Name">Фильтр</h2>
-                    </div>
-                    <ReactSlider 
-                    className="catalog__year-slider" 
-                    thumbClassName="example-thumb"
-                     trackClassName="example-track"
-                     defaultValue={[1896, 2023]}
-                     max={2023}
-                     min={1896}
-                     renderThumb={(props,state) => <div {...props}>{state.valueNow}</div>}
-                     onChange={(choiceYear,index) => setChoiceYear(choiceYear)}
-                     />
-                      <ReactSlider 
-                    className="catalog__year-slider" 
-                    thumbClassName="example-thumb"
-                     trackClassName="example-track"
-                     ariaValuetextClassName ="text"
-                     defaultValue={[0, 10]}
-                     max={10}
-                     min={0}
-                     renderThumb={(props,state) => <div {...props}>{state.valueNow}</div>}
-                     onChange={(choiceKp,index) => setchoiceKp(choiceKp)}
-                     />
-                </form>
-            
-                <p>start: {choiceYear[0]}</p>
-                <p>end :{choiceYear[1]} </p>
-            </div>
+  const [movieList, setMovieList] = useState([
+    {
+      id: 1,
+      title: "Drive",
+      discription: "lorem fffffffffffffffff",
+      genre: "crime ryan gosling",
+      movieImg: "https://m.media-amazon.com/images/I/81D+KJkO4SL.jpg",
+      year: "2008",
+      kp: "7.8",
+    },
+    {
+      id: 2,
+      title: "wolf woll",
+      discription: "lorem fffffffffffffffff",
+      genre: "crime ryan gosling",
+      movieImg: "https://m.media-amazon.com/images/I/81D+KJkO4SL.jpg",
+      year: "2007",
+      kp: "7.8",
+    },
+    {
+      id: 3,
+      title: "orange",
+      discription: "lorem fffffffffffffffff",
+      genre: "crime ryan gosling",
+      movieImg: "https://m.media-amazon.com/images/I/81D+KJkO4SL.jpg",
+      year: "1970",
+      kp: "6.8",
+    },
+    {
+      id: 4,
+      title: "mamasha polpota",
+      discription: "lorem fffffffffffffffff",
+      genre: "crime ryan gosling",
+      movieImg: "https://m.media-amazon.com/images/I/81D+KJkO4SL.jpg",
+      year: "1993",
+      kp: "0",
+    },
+    {
+      id: 5,
+      title: "great dictator",
+      discription: "lorem fffffffffffffffff",
+      genre: "crime ryan gosling",
+      movieImg: "https://m.media-amazon.com/images/I/81D+KJkO4SL.jpg",
+      year: "1940",
+      kp: "8.8",
+    },
+    {
+      id: 6,
+      title: "thief club",
+      discription: "lorem fffffffffffffffff",
+      genre: "crime ryan gosling",
+      movieImg: "https://m.media-amazon.com/images/I/81D+KJkO4SL.jpg",
+      year: "1999",
+      kp: "7.8",
+    },
+    {
+      id: 7,
+      title: "pirat",
+      discription: "lorem fffffffffffffffff",
+      genre: "crime ryan gosling",
+      movieImg: "https://m.media-amazon.com/images/I/81D+KJkO4SL.jpg",
+      year: "2004",
+      kp: "2.8",
+    },
+    {
+      id: 8,
+      title: "your name",
+      discription: "lorem fffffffffffffffff",
+      genre: "crime ryan gosling",
+      movieImg: "https://m.media-amazon.com/images/I/81D+KJkO4SL.jpg",
+      year: "2020",
+      kp: "3.8",
+    },
+    {
+      id: 9,
+      title: "ne your name",
+      discription: "lorem fffffffffffffffff",
+      genre: "crime ryan gosling",
+      movieImg: "https://m.media-amazon.com/images/I/81D+KJkO4SL.jpg",
+      year: "2021",
+      kp: "7.8",
+    },
+    {
+      id: 10,
+      title: "borat",
+      discription: "lorem fffffffffffffffff",
+      genre: "crime ryan gosling",
+      movieImg: "https://m.media-amazon.com/images/I/81D+KJkO4SL.jpg",
+      year: "2007",
+      kp: "6.8",
+    },
+  ]);
+  const [sortedMovieList, setSortedMovieList] = useState(movieList);
+  const [searchedMovieList, setSearchedMovieList] = useState(movieList);
+  const [filteredMovieList, setFilteredMovieList] = useState(movieList);
+  const [selectedSort, setSelectedSort] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [choiceYear, setChoiceYear] = useState([1896, 2023]);
+  const [chosenRating, setChosenRating] = useState([0, 10]);
+
+  const sortMovieList = (sortBy) => {
+    let tempArray;
+    setSelectedSort(sortBy);
+    if (["id", "year"].includes(sortBy)) {
+      tempArray = [...movieList]
+        .map((value) => JSON.parse(JSON.stringify(value)))
+        .sort((a, b) => {
+          // map используется для того, чтобы основной массив не мутировал
+          if (a[sortBy] > b[sortBy] && sortBy === "year")
+            return -1;
+          else if (a[sortBy] < b[sortBy] && sortBy === "id") return -1;
+        });
+    } else if (["title"].includes(sortBy))
+      tempArray = [...movieList].sort((a, b) => {
+        return a[sortBy].localeCompare(b[sortBy]);
+      });
+    setSortedMovieList(tempArray);
+  };
+
+  const filterMovieList = () => {
+    setFilteredMovieList(
+      sortedMovieList.filter((movie) => {
+        return (
+          movie.year >= Number(choiceYear[0]) &&
+          movie.year <= Number(choiceYear[1]) &&
+          movie.kp >= Number(chosenRating[0]) &&
+          movie.kp <= Number(chosenRating[1])
+        );
+      })
+    );
+  };
+
+  const searchMovie = () => {
+    const tempArray = movieList.filter((movie) => {
+      return movie.title.toLowerCase().includes(searchQuery.toLowerCase());
+    });
+    setSearchedMovieList(tempArray);
+  };
+
+  useEffect(() => {
+    if (searchQuery.length >= 2) searchMovie();
+  });
+
+  return (
+    <>
+      <CatalogFilm
+        movie={{
+          movieImg:
+            "https://i.pinimg.com/originals/b7/62/b1/b762b184afe21c6af483607e84c307b0.png",
+          title: "Drive",
+          genre: "криминал драма триллер",
+          discription:
+            "Великолепный водитель – при свете дня он выполняет каскадёрские трюки на съёмочных площадках Голливуда, а по ночам ведет рискованную игру. Но один опасный контракт – и за его жизнь назначена награда. Теперь, чтобы остаться в живых и спасти свою очаровательную соседку, он должен делать то, что умеет лучше всего – виртуозно уходить от погони.",
+          director: "Режиссёр: Николас Виндинг Рефн",
+          kp: "8.7",
+        }}
+      />
+      <div className="catalog">
+        <div className="catalog-cards">
+          <form className="catalog-cards-filter" name="form1">
+            <label for="filter" class="catalog-cards-label">
+              Сортировать по{" "}
+            </label>
+            <SortSelection
+              value={selectedSort}
+              onChange={sortMovieList}
+              defaultValue={""}
+              options={[
+                { value: "id", name: "популярности" },
+                { value: "title", name: "алфавиту" },
+                { value: "year", name: "годам" },
+              ]}
+            />
+          </form>
+          <CardList
+            movieList={
+              searchQuery.length >= 2 ? searchedMovieList : sortedMovieList
+            }
+          />
         </div>
+        <div className="catalog-filter">
+          <MyInput
+            placeholder="Поиск Фильма"
+            onChange={(e) => {
+              setSearchQuery(e.target.value);
+            }}
+          />
+          <form className="catalog-form" name="form2">
+            <div className="catalog-form-head">
+              <div className="catalog-form-head-wrapper">
+                <svg
+                  width="20"
+                  height="16"
+                  viewBox="0 0 20 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M0 1C0 0.447715 0.373096 0 0.833333 0H19.1667C19.6269 0 20 0.447715 20 1C20 1.55228 19.6269 2 19.1667 2H0.833333C0.373096 2 0 1.55228 0 1ZM3.33333 8C3.33333 7.44772 3.70643 7 4.16667 7H15.8333C16.2936 7 16.6667 7.44772 16.6667 8C16.6667 8.55228 16.2936 9 15.8333 9H4.16667C3.70643 9 3.33333 8.55228 3.33333 8ZM6.66667 15C6.66667 14.4477 7.03976 14 7.5 14H12.5C12.9602 14 13.3333 14.4477 13.3333 15C13.3333 15.5523 12.9602 16 12.5 16H7.5C7.03976 16 6.66667 15.5523 6.66667 15Z"
+                    fill="#CFCFCF"
+                  />
+                </svg>
+                <h2 className="catalog-form-head-wrapper__name">Фильтр</h2>
+              </div>
+            </div>
+            <div className="catalog-form-wrapper">
+              <ReactSlider
+                className="catalog-slider__year"
+                thumbClassName="example-thumb"
+                trackClassName="example-track"
+                defaultValue={[1896, 2023]}
+                max={2023}
+                min={1896}
+                renderThumb={(props, state) => (
+                  <div {...props}>
+                    <p>{state.valueNow}</p>
+                  </div>
+                )}
+                onChange={(chosenYear, index) => {
+                  setChoiceYear(chosenYear);
+                  filterMovieList();
+                }}
+              />
+              <ReactSlider
+                className="catalog-slider__year"
+                thumbClassName="example-thumb"
+                trackClassName="example-track"
+                ariaValuetextClassName="text"
+                defaultValue={[0, 10]}
+                max={10}
+                min={0}
+                renderThumb={(props, state) => (
+                  <div {...props}>
+                    <p>{state.valueNow}</p>
+                  </div>
+                )}
+                onChange={(chosenRating, index) => {
+                  setChosenRating(chosenRating);
+                  filterMovieList();
+                }}
+              />
+            </div>
+          </form>
+          <p>start: {choiceYear[0]}</p>
+          <p>end :{choiceYear[1]} </p>
         </div>
-    )
-}
+      </div>
+    </>
+  );
+};
 export default Catalog;
