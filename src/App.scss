@@ -1,8 +1,50 @@
 body {
   background: #1E1E1E;
 }
+
 .MainPage {
-  h1{
-    color: cornflowerblue;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  overflow: auto;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+
+  h1 {
+    color: #cfcfcf;
+    text-align: center;
+    font-size: 42px;
+    font-family: Montserrat, initial;
+    margin-top: 3.857em;
+    font-weight: lighter;
   }
+
+  h2 {
+    color: #cfcfcf;
+    text-align: center;
+    font-size: 28px;
+    font-family: Montserrat, initial;
+    margin-top: 3.857em;
+    font-weight: lighter;
+  }
+
+  p {
+    color: #cfcfcf;
+    text-align: center;
+    font-size: 18px;
+    font-family: Montserrat, initial;
+  }
+
+
+  .QRcode {
+    
+    width: 250px;
+    height: 250px;
+    background: #0F0F0F70;
+    border-radius: 15px;
+  }
+
 }
