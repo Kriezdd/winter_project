@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import SortSelection from "./SortSelection";
-import MyInput from "./MyInput";
-import CardList from "./CardList";
-import Header from "../Header/Header";
+import MovieList from "./CardList";
 import ReactSlider from "react-slider";
 import CatalogFilm from "./CatalogFilm";
 const Catalog = () => {
@@ -100,10 +98,9 @@ const Catalog = () => {
   ]);
   const [sortedMovieList, setSortedMovieList] = useState(movieList);
   const [searchedMovieList, setSearchedMovieList] = useState(movieList);
-  const [filteredMovieList, setFilteredMovieList] = useState(movieList);
   const [selectedSort, setSelectedSort] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
-  const [chosenYears, setChosenYears] = useState([1896, 2023]);
+  const [chosenYears, setChosenYears] = useState([1895, 2023]);
   const [chosenRating, setChosenRating] = useState([0, 10]);
   const [isFilterActive, setIsFilterActive] = useState(false);
 
@@ -123,6 +120,7 @@ const Catalog = () => {
             return -1;
           else if (a[sortBy] < b[sortBy] && sortBy === "id")
             return -1;
+          // todo: how to simplify??
         });
     } else if (["title"].includes(sortBy))
       tempArray = [...movieList].sort((a, b) => {
@@ -131,19 +129,16 @@ const Catalog = () => {
     setSortedMovieList(tempArray);
   };
 
-  const filterMovieList = () => {
-    setFilteredMovieList(sortedMovieList);
-    setFilteredMovieList(
-      filteredMovieList.filter((movie) => {
-        return (
-          movie.year >= Number(chosenYears[0]) &&
-          movie.year <= Number(chosenYears[1]) &&
-          movie.kp >= Number(chosenRating[0]) &&
-          movie.kp <= Number(chosenRating[1])
-        );
-      })
+  const finalMovieList = sortedMovieList.filter(movie => { // FILTER BY SEARCH
+    return movie.title.toLowerCase().includes(searchQuery.toLowerCase())
+  }).filter((movie) => { // FILTER BY YEAR AND RATING
+    return (
+        movie.year >= Number(chosenYears[0]) &&
+        movie.year <= Number(chosenYears[1]) &&
+        movie.kp >= Number(chosenRating[0]) &&
+        movie.kp <= Number(chosenRating[1])
     );
-  };
+  });
 
   const handleSearch = (e) => {
     setSearchQuery(e.target.value);
@@ -175,7 +170,7 @@ const Catalog = () => {
       <div className="catalog">
         <div className="catalog-cards">
           <form className="catalog-cards-filter" name="form1">
-            <label for="filter" class="catalog-cards-label">
+            <label for="catalog-cards-filter" className="catalog-cards-label">
               Сортировать по{" "}
             </label>
             <SortSelection
@@ -189,19 +184,15 @@ const Catalog = () => {
               ]}
             />
           </form>
-          <CardList
+          {/* ВЫВОД ФИЛЬМОВ ПО ИТОГАМ ПРОГОНОВ ТУТ */}
+          <MovieList
             movieList={
-              sortedMovieList
+              finalMovieList
             }
           />
         </div>
         <div className="catalog-filter">
-          <MyInput
-            placeholder="Поиск Фильма"
-            onChange={(e) => {
-              handleSearch(e);
-            }}
-          />
+
           <form className="catalog-form" name="form2">
             <div className="catalog-form-head">
               <div className="catalog-form-head-wrapper">
@@ -227,9 +218,9 @@ const Catalog = () => {
                 className="catalog-slider__year"
                 thumbClassName="example-thumb"
                 trackClassName="example-track"
-                defaultValue={[1896, 2023]}
+                defaultValue={[1895, 2023]}
                 max={2023}
-                min={1896}
+                min={1895}
                 renderThumb={(props, state) => (
                   <div {...props}>
                     <p>{state.valueNow}</p>
@@ -238,7 +229,6 @@ const Catalog = () => {
                 onChange={(chosenYear, index) => {
                   setChosenYears(chosenYear);
                   setIsFilterActive(true);
-                  filterMovieList();
                 }}
               />
               <ReactSlider
@@ -257,13 +247,16 @@ const Catalog = () => {
                 onChange={(chosenRating, index) => {
                   setChosenRating(chosenRating);
                   setIsFilterActive(true);
-                  filterMovieList();
                 }}
+              />
+              <input
+                  placeholder="начните писать название"
+                  onChange={(e) => {
+                    handleSearch(e);
+                  }}
               />
             </div>
           </form>
-          <p>start: {chosenYears[0]}</p>
-          <p>end :{chosenYears[1]} </p>
         </div>
       </div>
     </>

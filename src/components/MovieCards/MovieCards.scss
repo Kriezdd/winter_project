@@ -1,15 +1,14 @@
 .MovieCardSmall {
-  width: 18.75rem;
-  height: 31.375rem;
+  height: fit-content;
   width: fit-content;
   flex: 0 0 18%;
   .Poster {
     display: flex;
     flex-direction: column-reverse;
-    height: 28.125rem;
     position: relative;
     img {
-      max-width: 18.75rem;
+      height: 45rem;
+      width: 30rem;
     }
   }
   .ShadowBG {

@@ -359,21 +359,28 @@ template {
 Our personal styles for text
 */
 
+*:focus {
+  outline: none;
+}
+* {
+  font-size: 10px;
+}
+
 h1 {
   color: #cfcfcf;
-  font-size: 3rem;
+  font-size: 4.2rem;
 }
 h2 {
   color: #cfcfcf;
-  font-size: 2.625rem;
+  font-size: 3.6rem;
 }
 
 h3 {
   color: #cfcfcf;
-  font-size: 1.75rem;
+  font-size: 2.4rem;
 }
 
 p {
   color: #cfcfcf;
-  font-size: 1.125rem;
+  font-size: 1.8rem;
 }
