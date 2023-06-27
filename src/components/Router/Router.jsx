@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import App from "../../App";
 import Catalog from "../Catalog/Catalog";
