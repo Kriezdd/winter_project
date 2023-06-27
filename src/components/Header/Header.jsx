@@ -8,7 +8,6 @@ const Header = () => {
   const navigate = useNavigate();
   return (
     <div>
-      <div className="Wrapper"></div>
       <div className="Header">
         <h1 onClick={() => navigate("/")}>KINOSPOT</h1>
         <div className="NavBar">
