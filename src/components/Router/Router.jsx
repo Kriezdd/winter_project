@@ -4,6 +4,7 @@ import App from "../../App";
 import Catalog from "../Catalog/Catalog";
 import Articles from "../Articles/Articles";
 import Selections from "../Selections/Selections";
+import MiniGame from "../MiniGame/MiniGame";
 
 const Router = () => {
     const location = useLocation();
@@ -14,6 +15,7 @@ const Router = () => {
                 <Route path="/catalog" element={<Catalog/>} />
                 <Route path="/articles" element={<Articles/>} />
                 <Route path="/selections" element={<Selections/>} />
+                <Route path="/minigame" element={<MiniGame/>} />
             </Routes>
         </div>
     );
