@@ -8,7 +8,7 @@ function App() {
     return (
         <div className="App">
             <div className="MainPage" style={{backgroundImage: `url(${bg})`}}>
-              <div className="MainContent">
+                <div className="textBox">
                 <h1>О НАС</h1>
                 <p>
                     KINOSPOT – это сайт, который всегда держит вас в курсе<br/> всех новостей
@@ -18,7 +18,7 @@ function App() {
                     более увлекательным и <br/>запоминающимся.
                 </p>
                 <h2>QR CODE</h2>
-                <p>на тестовый функционал с алгоритмом<br/> по подбору фильмов в телеграмм</p>
+                <p>на тестовый функционал с алгоритм ом<br/> по подбору фильмов в телеграмм</p>
                 <div className="QRcode">
                     <a href="https://t.me/KinoSpotBot">
                         <img src={qr} alt="QR код телеграмм бота"/>
@@ -26,7 +26,7 @@ function App() {
                 </div>
                 <p>Подобрать фильм</p>
             </div>
-          </div>
+            </div>
         </div>
     );
 }
