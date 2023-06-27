@@ -158,10 +158,6 @@ const Catalog = () => {
     setSearchedMovieList(tempArray);
   };
 
-  useEffect(() => {
-    if (searchQuery.length >= 2) searchMovie();
-  });
-
   return (
     <>
       <CatalogFilm
