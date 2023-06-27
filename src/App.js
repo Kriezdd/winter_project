@@ -1,14 +1,12 @@
 import React from "react";
 import Header from "./components/Header/Header";
-import './App.scss';
-
+import "./App.scss";
+import "./components/Catalog/Catalog.scss";
 function App() {
     return (
         <div className="App">
-            <Header />
             <div className="MainPage">
                 <h1>О НАС</h1>
-                <Header/>
                 <p>
                     KINOSPOT – это сайт, который всегда держит вас в курсе<br/> всех новостей
                     киноиндустрии и предлагает множество<br/> возможностей для тех, кто любит
