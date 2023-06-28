@@ -15,6 +15,7 @@ const Header = () => {
                     <p onClick={() => navigate("/catalog")}>каталог</p>
                     <p onClick={() => navigate("/articles")}>статьи</p>
                     <p onClick={() => navigate("/selections")}>подборки</p>
+                    <p onClick={() => navigate("/minigame")}>мини-игра</p>
                 </div>
                 <div className="SearchField">
                     <input className="SearchBar" placeholder="поиск..."/>
