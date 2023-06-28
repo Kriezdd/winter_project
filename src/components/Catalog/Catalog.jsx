@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import SortSelection from "./SortSelection";
 import MovieList from "./CardList";
 import ReactSlider from "react-slider";
@@ -109,6 +109,8 @@ const Catalog = () => {
   const sortMovieList = (sortBy) => {
     let tempArray;
 
+
+
     setSelectedSort(sortBy);
     if(searchQuery){
       setSortedMovieList(searchedMovieList)
@@ -154,6 +156,8 @@ const Catalog = () => {
     });
     setSearchedMovieList(tempArray);
   };
+
+
 
   return (
     <>
