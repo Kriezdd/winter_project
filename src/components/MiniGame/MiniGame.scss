@@ -12,37 +12,50 @@
     height: 27.125rem;
     flex-shrink: 0;
   }
-  .FilmBar {
-    width: 43.75rem;
+  .FilmName {
+    width: 51.81256rem;
     height: 2.125rem;
-    flex-shrink: 0;
-    border-radius: 10px;
-  }
-  .autocomplete {
-    //top: 50px;
-    width: 100%;
-    background: white;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    max-height: 240px;
-    height: auto;
-    overflow: auto;
-  }
-  .autocomplete_title {
-    padding: 10px;
-  }
-  .autocomplete_title:hover {
-    background: dimgray;
-    cursor: pointer;
-    transition: cubic-bezier(1, 0, 0, 1) .3s all;
-  }
-  button{
-    width: 8.04619rem;
-    height: 2.125rem;
-    flex-shrink: 0;
-    background: #485E2D;
-    border-radius: 10px;
-    color: aliceblue;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap ;
+    justify-content: space-between;
+
+    .FilmBar {
+      width: 43.75rem;
+      height: 2.125rem;
+      flex-shrink: 0;
+      border-radius: 10px;
+    }
+
+    .autocomplete {
+      //top: 50px;
+      width: 100%;
+      background: white;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      max-height: 240px;
+      height: auto;
+      overflow: auto;
+      border-radius: 10px;
+    }
+
+    .autocomplete_title {
+      padding: 10px;
+    }
+
+    .autocomplete_title:hover {
+      background: dimgray;
+      cursor: pointer;
+      transition: cubic-bezier(1, 0, 0, 1) .3s all;
+    }
+
+    button {
+      width: 8.04619rem;
+      height: 2.125rem;
+      background: #485E2D;
+      border-radius: 10px;
+      color: aliceblue;
+    }
   }
 }

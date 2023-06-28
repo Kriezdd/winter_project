@@ -7,10 +7,10 @@ import MovieTitles from "./MovieTitles";
 const MiniGame = () => {
     const [titles, setTitles] = useState([
         {id: 1, text: "Великий Гэтсби"},
-        {id: 2, text: "dsadasd"},
-        {id: 3, text: "sdsfdsdsfs"},
-        {id: 4, text: "sdfsfsdfs"},
-        {id: 5, text: "afdfsdfd"},
+        {id: 2, text: "Человек-паук"},
+        {id: 3, text: "Великий"},
+        {id: 4, text: "Гонка"},
+        {id: 5, text: "Горбатая гора"},
     ])
 
     const [value, setValue] = useState('')
@@ -19,6 +19,17 @@ const MiniGame = () => {
         return title.text.toLowerCase().includes(value.toLowerCase())
         }
     )
+
+    const [isOpen, setIsOpen] = useState(true)
+
+    const itemClickHandler = (e) => {
+        setValue(e.target.textContent)
+        setIsOpen(!isOpen)
+    }
+
+    const inputClickHandler = () => {
+        setIsOpen(true)
+    }
 
     return (
         <div>
@@ -33,19 +44,26 @@ const MiniGame = () => {
                 <div className="FilmName">
                     <input
                         type="text"
-                        className="FilmBar" placeholder="Введите название"/>
+                        className="FilmBar"
+                        placeholder="Введите название"
+                        value={value}
                         onChange={(event) => setValue(event.target.value)}
+                        onClick={inputClickHandler}
+                        />
                     <ul className="autocomplete">
                     {
-                         filteredTitles.map((title,id) => {
+                        value && isOpen
+                            ? filteredTitles.map((title,id) => {
                                 return (
                                     <li
                                         className="autocomplete_title"
+                                        onClick={itemClickHandler}
                                     >
                                         <MovieTitles title={title} key={title.id}/>
                                     </li>
                                 )
                                 })
+                            : null
                     }
                     </ul>
                     <button>Ответить</button>
