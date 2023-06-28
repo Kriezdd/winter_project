@@ -1,14 +1,40 @@
 .Footer {
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: #18191a;
-    height: 6rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #18191a;
+  height: 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+
+  .icon {
+    width: 3rem;
+    height: 3rem;
+    margin-left: 5rem;
+  }
+
+  .icon:hover {
+    filter: brightness(1.5);
+    outline: none;
+    cursor: pointer;
+  }
+  .logo {
     
-    }
-  
-  
+  }
+  .logo:hover {
+    cursor: pointer;
+  }
+  .back-to-top {
+    width: 3rem;
+    height: 3rem;
+    margin-right: 5rem;
+  }
+
+  .back-to-top:hover {
+    filter: brightness(1.5);
+    outline: none;
+    cursor: pointer;
+  }
+}

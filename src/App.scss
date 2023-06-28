@@ -6,16 +6,19 @@ body {
   flex-direction: column;
   align-content: center;
   align-items: center;
+  
   .textBox {
     display: flex;
     flex-direction: column;
     align-content: center;
     align-items: center;
     margin-top: 10rem;
+    margin-bottom: 3rem;
     width: 60.3rem;
-    height: 70rem;
+    height: 72rem;
     background: #0f0f0f70;
     border-radius: 1.5rem;
+
     h1 {
       color: #cfcfcf;
       text-align: center;
@@ -43,7 +46,7 @@ body {
       margin-bottom: 1rem;
       width: 25rem;
       height: 25rem;
-      background: #0f0f0f70;
+      background: #0a0a0a70;
       border-radius: 1.5rem;
       display: flex;
       justify-content: center;
