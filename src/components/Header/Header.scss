@@ -10,72 +10,113 @@
   align-items: center;
   justify-content: space-between;
 
-  h1 {
-    font-family: "Montserrat", sans-serif;
+  .WholeLogoTitle {
     font-style: normal;
     font-weight: 700;
-    font-size: 28px;
-    line-height: 34px;
+    line-height: 3.4rem;
     display: flex;
     align-items: center;
     text-align: center;
-    color: white;
-    margin-left: 35px;
+    color: #CFCFCF;
+    margin-left: 3.5rem;
     cursor: pointer;
+    scale: 1;
+    transition: color 0.1s ease-in-out, scale 0.2s ease-in-out;
+    .LogoTitle {
+      font-size: 2.8rem;
+    }
+    :nth-of-type(1) {
+      color: #b72828;
+    }
+  }
+  .WholeLogoTitle:hover {
+    scale: 1.05;
+    :nth-of-type(1) {
+      color: #CFCFCF;
+    }
+    :nth-of-type(2) {
+      color: #b72828;
+    }
   }
 
   .NavBar {
-    width: 500px;
+    width: 50%;
     display: flex;
-    justify-content: space-between;
-
-    p {
-      font-family: "Montserrat", sans-serif;
+    justify-content: space-evenly;
+    h3 {
       font-style: normal;
       font-weight: 400;
-      font-size: 28px;
       line-height: 34px;
       display: flex;
       align-items: center;
       text-align: center;
       color: #cfcfcf;
       cursor: pointer;
+      transition: color 0.2s ease-in-out;
+    }
+    :active {
+      transform: scale(0.9);
+    }
+    :hover {
+      color: #b72828;
     }
   }
 
   .SearchField {
-    width: 716px;
+    width: 30%;
     display: flex;
     align-items: center;
     justify-content: space-between;
 
     .SearchBar {
-      width: 630px;
-      height: 36px;
       background: #373737;
-      border-radius: 4px;
+      width: calc(100% - 8rem);
+      height: 3.5rem;
+      font-size: 1.5rem;
+      border-radius: 5px;
+      border: 1px solid #1e1e1e;
+      color: #cfcfcf;
+      transition: background-color 0.1s ease-in-out;
     }
-
+    .SearchBar:hover {
+      background-color: #474747;
+    }
     .Filter {
-      width: 22px;
-      height: 20px;
+      width: 2rem;
+      height: 2rem;
       cursor: pointer;
     }
-
     .SearchIcon {
-      width: 20px;
-      height: 20px;
+      width: 2rem;
+      height: 2rem;
       cursor: pointer;
     }
   }
 
   .ProfileCircle {
-    width: 44px;
-    height: 44px;
-    border-radius: 25px;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 2rem;
     border: 0.5px solid #373737;
-    background: white;
-    margin-right: 35px;
+    background: #6c6c6c;
+    margin: 0 4rem;
     cursor: pointer;
+    position: relative;
+    scale: 1;
+    transition: scale 0.1s ease-in-out, border 0.1s ease-in-out;
+    img {
+      border-radius: 100%;
+      width: 100%;
+      height: 100%;
+      opacity: 1;
+      transition: opacity 0.2s ease-in-out;
+    }
+    :hover {
+      opacity: 0.8;
+    }
+  }
+  .ProfileCircle:hover {
+    border: 1px solid #6c6c6c;
+    scale: 1.05;
   }
 }

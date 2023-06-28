@@ -9,14 +9,19 @@ const Selections = () => {
     {
       id: 1,
       title: "сигма (базированные фильмы)",
-      movieIds: [361, 276598, 588, 358, 589290, 1048334]
+      movieIds: [361, 276598, 588, 358, 589290, 1048334, 41519]
+    },
+    {
+      id: 2,
+      title: "комедии, которые стоит посмотреть",
+      movieIds: [2868, 5090, 1721, 5185, 1796, 6039, 5129]
     }
   ]);
 
   return (
     <div>
       <div className="Selections">
-        <h2 className="BlockTitle">Подборки от KINOSPOT:</h2>
+        <h2 className="BlockTitle">Подборки от KINOSPOT</h2>
         <div className="Container">
           {selections.map((selection) =>
             <SelectionBlock selection={selection} key={selection.id} />
