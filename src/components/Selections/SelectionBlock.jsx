@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import MovieCardSmall from "../MovieCards/MovieCardSmall";
+import MovieCardSmall from "./MovieCards/MovieCardSmall";
 import {EmblaCarousel} from "../EmblaCarousel/EmblaCarousel";
 import axios from "axios";
 

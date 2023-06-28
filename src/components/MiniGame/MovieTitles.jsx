@@ -10,9 +10,9 @@ const MovieTitles = (props) => {
     ])*/
     return (
         <div className="title">
-            <div className="TitleText">
-                <strong>{props.title.text}</strong>
-            </div>
+            <p className="TitleText">
+                {props.title.text}
+            </p>
         </div>
     );
 };

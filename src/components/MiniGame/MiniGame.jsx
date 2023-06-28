@@ -3,6 +3,7 @@ import './MiniGame.scss';
 import Header from "../Header/Header";
 import MovieTitles from "./MovieTitles";
 import Modal from "./Modal/Modal";
+import movieTitles from "./MovieTitles";
 
 
 const MiniGame = () => {
@@ -13,18 +14,20 @@ const MiniGame = () => {
         {id: 4, text: "Гонка"},
         {id: 5, text: "Горбатая гора"},
     ])
+    const [value, setValue] = useState('');
+    const [isOpen, setIsOpen] = useState(false);
+    const [isActive, setIsActive] = useState(false);
+    const [isCorrect, setIsCorrect] = useState(false);
+    const [answer, setAnswer] = useState('');
 
-    const [value, setValue] = useState('')
 
     const filteredTitles = titles.filter(title => {
-        return title.text.toLowerCase().includes(value.toLowerCase())
+            return title.text.toLowerCase().includes(answer.toLowerCase())
         }
     )
 
-    const [isOpen, setIsOpen] = useState(true)
-
     const itemClickHandler = (e) => {
-        setValue(e.target.textContent)
+        setAnswer(e.target.textContent)
         setIsOpen(!isOpen)
     }
 
@@ -32,45 +35,69 @@ const MiniGame = () => {
         setIsOpen(true)
     }
 
-    const [modalActive, setModalActive] = useState(true)
+    function handleInputChange(event) {
+        setAnswer(event.target.value);
+    }
+
+    function handleSubmit(event) {
+        event.preventDefault();
+        if (answer === titles[0]["text"]) {
+            setIsCorrect(true);
+        } else {
+            setIsCorrect(false);
+        }
+    }
 
     return (
         <div>
-            <Header/>
             <div className="MiniGame">
-                <h2>Из какого фильма кадр?</h2>
-                <div className="Image">
-                    <img
-                        src="https://avatars.mds.yandex.net/get-kinopoisk-image/1773646/8f757a73-665d-4beb-8fd4-211de89d226c/1920x"
-                        alt=""/>
-                </div>
-                <div className="FilmName">
-                    <input
-                        type="text"
-                        className="FilmBar"
-                        placeholder="Введите название"
-                        value={value}
-                        onChange={(event) => setValue(event.target.value)}
-                        onClick={inputClickHandler}
+                <h2 className="title">Из какого фильма кадр?</h2>
+                <img
+                    src="https://avatars.mds.yandex.net/get-kinopoisk-image/1773646/8f757a73-665d-4beb-8fd4-211de89d226c/1920x"
+                    alt="" className="MovieShot"/>
+                <div className="AnswerAndResult">
+                    <form onSubmit={handleSubmit} className="AnswerField">
+                        <input
+                            type="text"
+                            className="AnswerInput"
+                            placeholder="Введите название"
+                            value={answer}
+                            onChange={(event) => {
+                                setAnswer(event.target.value);
+                                handleInputChange(event);
+                            }
+                        }
+                            onClick={inputClickHandler}
                         />
-                    <ul className="autocomplete">
-                    {
-                        value && isOpen
-                            ? filteredTitles.map((title,id) => {
-                                return (
-                                    <li
-                                        className="autocomplete_title"
-                                        onClick={itemClickHandler}
-                                    >
-                                        <MovieTitles title={title} key={title.id}/>
-                                    </li>
-                                )
-                                })
-                            : null
-                    }
-                    </ul>
-                    <button className="Answer" onClick={() => setModalActive(true)}>Ответить</button>
-                    <Modal active={modalActive} setActive={setModalActive}/>
+                        <ul className="autocomplete">
+                            {
+                                answer && isOpen
+                                    ? filteredTitles.map((title, id) => {
+                                        return (
+                                            <li
+                                                className="autocomplete_title"
+                                                onClick={itemClickHandler}
+                                            >
+                                                <MovieTitles title={title} key={title.id}/>
+                                            </li>
+                                        )
+                                    })
+                                    : null
+                            }
+                        </ul>
+                        <button type="submit" className="Submit" onClick={() => {
+                            setIsActive(true);
+                        }}>Ответить
+                        </button>
+                    </form>
+                    <div className="Result">
+                        {
+                            isActive
+                                ? (isCorrect
+                                    ? <h3>Правильно!</h3> : <p>Неправильно... Попробуй ещё!</p>)
+                                : null
+                        }
+                    </div>
                 </div>
             </div>
         </div>

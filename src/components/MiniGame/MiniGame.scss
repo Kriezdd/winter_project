@@ -1,63 +1,94 @@
 .MiniGame {
+  width: fit-content;
+  min-height: 70vh;
   background: #1E1E1E;
-  height: 100%;
-  width: 100%;
-  position: absolute;
   display: flex;
   align-items: center;
   flex-direction: column;
+  justify-content: center;
 
-  img {
-    width: 83.2rem;
-    height: 43.4rem;
-    flex-shrink: 0;
+  .title {
+    margin: 2rem;
   }
-  .FilmName {
-    width: 82.9001rem;
-    height: 3.4rem;
-    flex-direction: row;
+
+  .MovieShot {
+    width: 50%;
+    margin: 2rem;
+  }
+
+  .AnswerAndResult {
+    position: relative;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    flex-wrap: nowrap ;
-    justify-content: space-between;
 
-    .FilmBar {
-      width: 70rem;
-      height: 3.4rem;
-      flex-shrink: 0;
-      border-radius: 10px;
+    .Result {
+      margin-top: 2rem;
+      h3 {
+        color: forestgreen;
+      }
     }
-
-    .autocomplete {
-      //top: 50px;
+    .AnswerField {
       width: 100%;
-      background: white;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      max-height: 240px;
-      height: auto;
-      overflow: auto;
-      border-radius: 10px;
-    }
+      height: 4rem;
+      display: flex;
+      align-items: center;
 
-    .autocomplete_title {
-      padding: 10px;
-    }
+      .AnswerInput {
+        width: 80%;
+        height: 100%;
+        padding-left: 2rem;
+        background: #373737;
+        font-size: 1.8rem;
+        border-radius: 10px 0 0 10px;
+        border: none;
+        color: #cfcfcf;
+        transition: background-color 0.1s ease-in-out;
+      }
 
-    .autocomplete_title:hover {
-      background: dimgray;
-      cursor: pointer;
-      transition: cubic-bezier(1, 0, 0, 1) .3s all;
-    }
+      .autocomplete {
+        top: 4rem;
+        position: absolute;
+        width: 80%;
+        background: #373737;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        max-height: 15rem;
+        overflow: auto;
+        border-radius: 10px;
+        font-size: 1.8rem;
+        display: flex;
+        flex-direction: column;
+      }
 
-    .Answer {
-      width: 12.8739rem;
-      height: 3.4rem;
-      border: 0;
-      padding: 0;
-      background: #485E2D;
-      border-radius: 10px;
-      color: aliceblue;
+      .autocomplete_title {
+        display: flex;
+        align-items: center;
+        width: calc(100% - 1rem);
+        border-radius: 10px;
+        height: 4rem;
+        color: #CFCFCF;
+        font-size: 1.8rem;
+      }
+
+      .autocomplete_title:hover {
+        background-color: #6c6c6c;
+        cursor: pointer;
+        transition: .3s all;
+      }
+
+      .Submit {
+        width: 20%;
+        height: 100%;
+        border: 0;
+        padding: 0;
+        background: #b72828;
+        border-radius: 0 10px 10px 0;
+        font-size: 1.8rem;
+        color: #CFCFCF;
+      }
     }
   }
 }
