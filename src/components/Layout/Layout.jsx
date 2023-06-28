@@ -5,11 +5,11 @@ import "./Layout.scss";
 
 const Layout = ({ children }) => {
   return (
-    <>
+    <div className='page'>
       <Header />
       <div className="layout-wrapper">{children}</div>
       <Footer/>
-    </>
+    </div>
   );
 };
 

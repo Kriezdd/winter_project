@@ -3,6 +3,8 @@ import SortSelection from "./SortSelection";
 import MovieList from "./CardList";
 import ReactSlider from "react-slider";
 import CatalogFilm from "./CatalogFilm";
+import './Catalog.scss';
+
 const Catalog = () => {
   const [movieList, setMovieList] = useState([
     {

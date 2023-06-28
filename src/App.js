@@ -1,13 +1,12 @@
 import React from "react";
 import "./App.scss";
-import "./components/Catalog/Catalog.scss";
 import qr from "./assets/mainpage/qr.png";
 import bg from "./assets/mainpage/bg.png";
 
 function App() {
     return (
         <div className="App">
-            <div className="MainPage" style={{backgroundImage: `url(${bg})`}}>
+            <div style={{backgroundImage: `url(${bg})`}}  className="MainPage" >
                 <div className="textBox">
                 <h1>О НАС</h1>
                 <p>
@@ -18,7 +17,7 @@ function App() {
                     более увлекательным и <br/>запоминающимся.
                 </p>
                 <h2>QR CODE</h2>
-                <p>на тестовый функционал с алгоритм ом<br/> по подбору фильмов в телеграмм</p>
+                <p>на тестовый функционал с алгоритмом<br/> по подбору фильмов в телеграмм</p>
                 <div className="QRcode">
                     <a href="https://t.me/KinoSpotBot">
                         <img src={qr} alt="QR код телеграмм бота"/>

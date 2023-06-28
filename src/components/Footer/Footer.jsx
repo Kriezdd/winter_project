@@ -20,7 +20,7 @@ const handlerScrollUp = () => {
 const Footer = () => {
     const navigate = useNavigate();
     return (
-        <div>
+        <div className="FooterContainer">
             <div className="Footer">
                 <img src={iconOpenF} className="icon"></img>
                 <img src={logo} className="logo" onClick={() => navigate("/")} />
@@ -31,4 +31,4 @@ const Footer = () => {
 
 };
 
-export default Footer;;
+export default Footer;

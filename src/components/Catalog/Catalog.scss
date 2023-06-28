@@ -1,11 +1,11 @@
 .catalog {
   min-height: 140rem;
-  margin: 4rem auto 0 auto;
+  margin: 6rem auto;
   background-color: #1e1e1e;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  width: calc(100vw - 60px);
+  width: calc(100vw - 6rem);
 
   .catalog-cards {
     width: 70%;
