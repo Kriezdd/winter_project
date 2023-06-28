@@ -8,21 +8,21 @@
   flex-direction: column;
 
   img {
-    width: 52rem;
-    height: 27.125rem;
+    width: 83.2rem;
+    height: 43.4rem;
     flex-shrink: 0;
   }
   .FilmName {
-    width: 51.81256rem;
-    height: 2.125rem;
+    width: 82.9001rem;
+    height: 3.4rem;
     flex-direction: row;
     align-items: center;
     flex-wrap: nowrap ;
     justify-content: space-between;
 
     .FilmBar {
-      width: 43.75rem;
-      height: 2.125rem;
+      width: 70rem;
+      height: 3.4rem;
       flex-shrink: 0;
       border-radius: 10px;
     }
@@ -50,9 +50,11 @@
       transition: cubic-bezier(1, 0, 0, 1) .3s all;
     }
 
-    button {
-      width: 8.04619rem;
-      height: 2.125rem;
+    .Answer {
+      width: 12.8739rem;
+      height: 3.4rem;
+      border: 0;
+      padding: 0;
       background: #485E2D;
       border-radius: 10px;
       color: aliceblue;

@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './MiniGame.scss';
 import Header from "../Header/Header";
 import MovieTitles from "./MovieTitles";
+import Modal from "./Modal/Modal";
 
 
 const MiniGame = () => {
@@ -30,6 +31,8 @@ const MiniGame = () => {
     const inputClickHandler = () => {
         setIsOpen(true)
     }
+
+    const [modalActive, setModalActive] = useState(true)
 
     return (
         <div>
@@ -66,7 +69,8 @@ const MiniGame = () => {
                             : null
                     }
                     </ul>
-                    <button>Ответить</button>
+                    <button className="Answer" onClick={() => setModalActive(true)}>Ответить</button>
+                    <Modal active={modalActive} setActive={setModalActive}/>
                 </div>
             </div>
         </div>
