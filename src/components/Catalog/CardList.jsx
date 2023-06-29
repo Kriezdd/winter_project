@@ -4,7 +4,7 @@ const CardList = ({ movieList }) => {
   return (
     <div className="catalog-cards-list">
       {movieList.map((movie) => (
-        <Card movie={movie} key={movie.id} />
+        <Card movie={movie} key={movie.filmId} />
       ))}
     </div>
   );

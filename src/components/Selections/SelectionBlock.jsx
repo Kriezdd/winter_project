@@ -30,7 +30,7 @@ const SelectionBlock = (props) => {
 
         movieIds.map((id) => {
             let url = apiUrl_noId.concat(id);
-            // fetchMovies(url);
+            fetchMovies(url);
             // todo: uncomment to test selections, but be careful with requests limit :)
         })
         console.log('USE EFFECT');
@@ -50,12 +50,12 @@ const SelectionBlock = (props) => {
 
     return (
         <div className="SelectionBlock">
-            <button onClick={clickFetch}>FETCH DATA</button>
+            {/*<button onClick={clickFetch}>FETCH DATA</button>*/}
             <h3 className="SelectionTitle">{props.selection.title}</h3>
             <div className="Layout">
                 <EmblaCarousel>
-                    {movies.map((movie, index) =>
-                        <MovieCardSmall movie={movie} key={index}/>
+                    {movies.map((movie) =>
+                        <MovieCardSmall movie={movie} key={movie.id}/>
                     )}
                 </EmblaCarousel>
             </div>

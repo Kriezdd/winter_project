@@ -8,11 +8,11 @@ const CatalogFilm = (props) => {
       <div className="catalogFilm-wrapper">
         <div className="catalogFilm-wrapper-info">
           <h2 className="catalogFilm-wrapper-info__name">
-            {props.movie.title}
+            {props.movie.alternativeName}
           </h2>
           <p className="catalogFilm-wrapper-info__genre">{props.movie.genre}</p>
           <p className="catalogFilm-wrapper-info__description">
-            {props.movie.discription}
+            {props.movie.name}
           </p>
           <div className="catalogFilm-wrapper-info-foot">
             <p className="catalogFilm-wrapper-info-foot__director">

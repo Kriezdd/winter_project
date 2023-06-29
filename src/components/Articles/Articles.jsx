@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import './Articles.scss';
-import Header from "../Header/Header";
 import BigArticles from "./BigArticles";
 import SmallArticles from "./SmallArticles";
 import slider from "../../assets/Articles/slider.png";
@@ -22,7 +21,7 @@ const Articles = () => {
         {
             id: 1,
             title: 'Выбор редакции',
-            body: 'Что сомтреть дома: "Актрисы" Федора Бондарчука, "Аватар: Путь воды" и матч "Бавария - Борусия"',
+            body: 'Что смотреть дома: "Актрисы" Федора Бондарчука, "Аватар: Путь воды" и матч "Бавария - Борусия"',
             info: '20.06.2023',
             picture: art1
         },
@@ -101,7 +100,6 @@ const Articles = () => {
     ])
     return (
         <div>
-            <Header/>
             <div className="Articles">
                 <div className="ArticlesContainer">
                     <div className="HeadContainer">
