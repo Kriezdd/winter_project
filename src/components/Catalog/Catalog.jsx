@@ -16,7 +16,8 @@ const Catalog = () => {
     const [chosenRating, setChosenRating] = useState([0, 10]);
     const [isFilterActive, setIsFilterActive] = useState(false);
     const [isFetched, setIsFetched] = useState(false);
-    const [page, setPage] = useState(14);
+    const [page, setPage] = useState(1);
+    const [isButtonDisabled, setIsButtonDisabled] = useState([true, false]);
 
     // API BEGIN
     const firstApiUrl = `https://api.kinopoisk.dev/v1.3/movie?page=1&limit=10&top250=%21null`;
@@ -83,7 +84,7 @@ const Catalog = () => {
     };
 
     const finalMovieList = sortedMovieList.filter(movie => { // FILTER BY SEARCH
-        return (movie.nameRu.toLowerCase().includes(searchQuery.toLowerCase()))
+        return (movie.nameRu?.toLowerCase().includes(searchQuery.toLowerCase()))
     }).filter(movie => { // FILTER BY YEAR AND RATING
         return (
             movie.year >= Number(chosenYears[0]) &&
@@ -105,6 +106,14 @@ const Catalog = () => {
         });
         setSearchedMovieList(tempArray);
     };
+
+    const pageCheck = () => {
+        if (page === 1) {
+            setIsButtonDisabled([true, false]);
+        } else if (page === 20) {
+            setIsButtonDisabled([false, true]);
+        }
+    }
 
     const increment = () => {
         setPage(page + 1);
@@ -139,26 +148,17 @@ const Catalog = () => {
             {/*todo: ПОФИКСИТЬ ПЕРЕКЛЮЧЕНИЕ ЗАПРОСОВ ДЛЯ РАЗНЫХ СТРАНИЦ*/}
             <div className="PageReducers">
                 {
-                    (page > 1 && page < 35)
-                        ?
                         (
                             <div className="buttonsToFetch">
-                                <button onClick={decrement}>
+                                <button disabled={isButtonDisabled[0]} onClick={decrement}>
                                     Предыдущая страница
                                 </button>
                                 {/*<button onClick={clickFetch}>ПОКАЗАТЬ ФИЛЬМЫ</button>*/}
-                                <button onClick={increment}>
+                                <button disabled={isButtonDisabled[1]} onClick={increment}>
                                     Следующая страница
                                 </button>
                             </div>
                         )
-
-                        : (page < 2)
-                            ?
-                            setPage(19)
-                            : (page > 19)
-                                ?
-                                setPage(2): null
                 }
             </div>
             <div className="catalog">
